@@ -12,6 +12,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Category</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -24,6 +25,17 @@
                         <td>{{$post->slug}}</td>
 
                         <td>{{ $post->category ? $post->category->name : '-' }}</td>
+
+                        <td>@forelse ($post->tags as $tag)
+
+                            <span class="badge text-bg-secondary">{{$tag->name}}</span>
+
+                            @empty
+
+                            -
+
+                            @endforelse
+                        </td>
 
                         <td>
                             <a class="btn btn-success" href="{{route('admin.posts.show', $post)}}">Show</a>
