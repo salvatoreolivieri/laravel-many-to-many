@@ -15,6 +15,10 @@ class Post extends Model
         'content'
     ];
 
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
+
     public static function slugGenerator($title){
 
         $slug = Str::slug($title, '-');
